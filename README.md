@@ -1,2 +1,3 @@
 # kpop-sentiment-analysis
- Comparing sentiments expressed by Korean and English speaking twitters on the topic of K-Pop
+
+The goal of this research project is to compare the sentiments expressed by Korean and English speakers regarding the topic of K-Pop on Twitter.
