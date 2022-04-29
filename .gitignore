@@ -153,3 +153,7 @@ cython_debug/
 
 # For Twitter API access
 config.ini
+twitter_keys.yaml
+
+# MacOS
+.DS_Store
