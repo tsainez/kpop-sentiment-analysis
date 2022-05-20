@@ -157,3 +157,5 @@ twitter_keys.yaml
 
 # MacOS
 .DS_Store
+kobert_model.pb
+kobert_best_model_state.bin
