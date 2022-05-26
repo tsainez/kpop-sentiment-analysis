@@ -1,6 +1,6 @@
 # K-pop Sentiment Analysis
 
-Prepared by [Anthony Sainez](mailto:asainez@ucmerced.edu) and [Jingyi Jennie Wu](mailto:jingyi_wu@umail.ucsb.edu) in collaboration with Barun ICT Research Center \[[en](https://www.barunict.org)\] \[[kr](barunict.kr)\] at Yonsei University in Seoul, South Korea.
+Prepared by [Anthony Sainez](mailto:asainez@ucmerced.edu) and [Jingyi Jennie Wu](mailto:jingyi_wu@umail.ucsb.edu) in collaboration with Barun ICT Research Center \[[en](https://www.barunict.org)\] \[[kr](http://barunict.kr)\] at Yonsei University in Seoul, South Korea.
 
 This repository contains data collected during May 2022 for use in sentiment analysis of K-pop related Tweets.
 
