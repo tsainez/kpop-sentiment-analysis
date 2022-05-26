@@ -10,8 +10,9 @@ import os
 import requests
 
 # For text cleanup (removal of punctuation)
-import preprocessor as p
+# import preprocessor as p
 import string
+import emoji
 import re
 
 
@@ -83,10 +84,14 @@ def clean(text):
     '''Cleans up Tweets before putting them into a CSV to ensure no errors
     in reading back. Note that we do not tokenize, stem or lemmatize.'''
 
-    text = p.clean(text)  # Takes care of newlines and other tricky stuff...
-
-    # Now get rid of special symbols: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+    # Get rid of special symbols: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
     text = "".join([char for char in text if char not in string.punctuation])
     text = re.sub('[0-9]+', '', text)
+
+    # Replace new lines with spaces
+    text = text.replace('\n', ' ')
+
+    # Remove emojis
+    text = emoji.replace_emoji(text, replace='')
 
     return text
