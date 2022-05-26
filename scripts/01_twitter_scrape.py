@@ -27,6 +27,9 @@ if int(max_results) < 10:
     print("\n\tWARNING: max_results cannot be lower than default value of 10.")
     max_results = 10
 
+print("\nEnter interval to wait between requests in seconds: ", end='')
+interval = input()
+
 since_id = None  # For now...
 total = 0 # Tracks the total amount of Tweets retrieved
 
@@ -63,12 +66,13 @@ while(True):
         except KeyError:
             sys.exit("\nNo additional Tweets found! Bye.")
 
-        print("\n\tRetrieved " +
-            str(json_response['meta']['result_count']) + " total Tweets.")
         total += json_response['meta']['result_count']
+        print("\n\tRetrieved " +
+            str(json_response['meta']['result_count']) + " new Tweets.")
+        print("\tTotal is now: " + str(total) + " Tweets.")
 
-        print("\nWaiting 5 minutes for next request...")
-        time.sleep(300)
+        print("\nWaiting " + interval + " seconds for next request...")
+        time.sleep(int(interval))
 
         # Else, we only want the most recent Tweets...
         most_recent = max(json_response['data'], key=lambda ev: ev['id'])
