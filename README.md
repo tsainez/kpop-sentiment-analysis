@@ -1,3 +1,23 @@
-# kpop-sentiment-analysis
+# K-pop Sentiment Analysis
 
-The goal of this research project is to compare the sentiments expressed by Korean and English speakers regarding the topic of K-Pop on Twitter.
+Prepared by [Anthony Sainez](mailto:asainez@ucmerced.edu) and [Jingyi Jennie Wu](mailto:jingyi_wu@umail.ucsb.edu) in collaboration with Barun ICT Research Center \[[en](https://www.barunict.org)\] \[[kr](barunict.kr)\] at Yonsei University in Seoul, South Korea.
+
+This repository contains data collected during May 2022 for use in sentiment analysis of K-pop related Tweets.
+
+## Context
+
+The data seeks to explore the controversy surrounding [Hybe entertainment](https://hybecorp.com/eng/main)'s new girl group [Le Sserafim](https://le-sserafim.com)— a member of which is alleged to have been a bully during her schooling.
+
+Hybe is an internationally successful and recongizable entertainment company, known mainly for their most influential boy band [BTS](https://en.wikipedia.org/wiki/BTS), which is the best-selling artist in South Korean history among other accolades.
+
+# Notable complications
+
+- This data was collected through a polling process, whereby we repeatedly scraped Twitter for new data. We chose this approach because we were not able to access any data that is older than 7 days or historical data. Our application for Twitter's Academic Research API v2 was denied, and we were not allowed to reapply.
+
+# Reproducibility
+
+All code used to produce this dataset is stored in the `scripts` folder.
+
+- TODO:
+  - Adjust scripts to not require human intervention to run.
+  - Create a Makefile for ease of reproducibility.
