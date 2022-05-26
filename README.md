@@ -16,8 +16,31 @@ Hybe is an internationally successful and recongizable entertainment company, kn
 
 # Reproducibility
 
-All code used to produce this dataset is stored in the `scripts` folder.
+To run and generate the dataset yourself:
 
-- TODO:
-  - Adjust scripts to not require human intervention to run.
-  - Create a Makefile for ease of reproducibility.
+1. Clone the repository::
+
+   ```
+   git clone https://github.com/tsainez/kpop-sentiment-analysis
+   cd kpop-sentiment-analysis
+   ```
+
+2. Create and activate a virtual environment::
+
+   ```
+   python3 -m venv venv
+   . venv/bin/activate
+   ```
+
+3. Install Python dependencies::
+
+   ```
+   pip3 install -r requirements.txt
+   ```
+
+4. Run the files in the `scripts` directory in order.
+
+## TODO:
+
+- Adjust scripts to not require human intervention to run.
+- Create a Makefile for ease of reproducibility.
