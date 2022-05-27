@@ -21,7 +21,7 @@ Hybe is an internationally successful and recongizable entertainment company, kn
 
 Here's a sample of some of the data.
 | id | text | created_at | lang |
-| :---------------- | ------------------ | :------------------------ | :--- |
+| :---------------- | :------------------ | :------------------------ | :--- |
 |1529697716368211968|it’s sad how you gu…| 2022-05-26 05:29:26+00:00 |en|
 |1529698322864558080|fuck u hybe|2022-05-26 05:37:55+00:00|en|
 |1529696402145955840|야가람아아이돌하고싶었…|2022-05-26 05:30:17+00:00 |ko|
