@@ -6,7 +6,7 @@ This repository contains data collected during May 2022 for use in sentiment ana
 
 ## Context
 
-The data seeks to explore the controversy surrounding [Hybe entertainment](https://hybecorp.com/eng/main)'s new girl group [Le Sserafim](https://le-sserafim.com)— a member of which is alleged to have been a bully during her schooling.
+The data seeks to explore the controversy surrounding [Hybe entertainment](https://hybecorp.com/eng/main)'s new girl group [Le Sserafim](https://le-sserafim.com)— a member of which (Kim Garam, 김가람) is alleged to have been a bully during her schooling.
 
 Hybe is an internationally successful and recongizable entertainment company, known mainly for their most influential boy band [BTS](https://en.wikipedia.org/wiki/BTS), which is the best-selling artist in South Korean history among other accolades.
 
