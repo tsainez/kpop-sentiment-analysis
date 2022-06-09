@@ -30,12 +30,15 @@ if int(max_results) < 10:
 print("\nEnter interval to wait between requests in seconds: ", end='')
 interval = input()
 
-since_id = None  # For now...
+# These values should be "none" for the first runtime.
+since_id = 0
+next_token = None
+
 total = 0 # Tracks the total amount of Tweets retrieved
 
 while(True):
     try:
-        url = create_url(keyword, max_results, since_id)
+        url = create_url(keyword, max_results, since_id, next_token)
         json_response = connect_to_endpoint(url[0], headers, url[1])
 
         # Open OR create the target CSV file
@@ -48,12 +51,16 @@ while(True):
             for tweet in json_response['data']:
                 # Pull relevant data from the Tweet object
                 created_at = dateutil.parser.parse(tweet['created_at'])
-                id = tweet['id']
+                id = int(tweet['id'])
                 lang = tweet['lang']
+                text = tweet['text']
+
+                # Is this the most recent Tweet we've gotten so far?
+                if id > since_id:
+                    since_id = id
 
                 # Clean up the Tweet text...
-                text = tweet['text']
-                text = clean(text)
+                text = clean(text, lang)
 
                 # Assemble all data in a list
                 res = [id, text, created_at, lang]
@@ -71,11 +78,13 @@ while(True):
             str(json_response['meta']['result_count']) + " new Tweets.")
         print("\tTotal is now: " + str(total) + " Tweets.")
 
-        print("\nWaiting " + interval + " seconds for next request...")
-        time.sleep(int(interval))
-
-        # Else, we only want the most recent Tweets...
-        most_recent = max(json_response['data'], key=lambda ev: ev['id'])
-        since_id = most_recent['id']
+        try:
+            # We will loop through the Tweets until there is no next_token
+            next_token = json_response['meta']['next_token']
+        except KeyError:
+            # If there is no next_token, wait and then poll again. 
+            print("\nNo next token. Waiting " + interval + " seconds for next request...")
+            time.sleep(int(interval))
+        
     except KeyboardInterrupt:
         sys.exit("\n\n\tTotal Tweets retrieved: {}\n\tExiting...\n".format(total))

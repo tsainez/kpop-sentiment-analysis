@@ -10,7 +10,7 @@ import os
 import requests
 
 # For text cleanup (removal of punctuation)
-# import preprocessor as p
+import preprocessor as p
 import string
 import emoji
 import re
@@ -38,7 +38,7 @@ def create_headers(bearer_token):
     return headers
 
 
-def create_url(query, max_results, since_id):
+def create_url(query, max_results, since_id, next_token):
     '''Creates the URL endpoint to send an HTTP request (GET) to.
     Changes depending on the query (what keyword to search for),
     the max number of results (between 10 and 100), and what the last
@@ -55,12 +55,15 @@ def create_url(query, max_results, since_id):
               'tweet.fields': 'lang,created_at'
               }
 
-    if since_id is not None:
-        print("\t\tsince_id provided as '{}'".format(since_id))
-        print("\t\tRetrieving only new Tweets!")
-        params['since_id'] = since_id
+    if next_token is not None:
+        print("\t\tNext token is {}".format(next_token))
+        params['next_token'] = next_token
     else:
-        print("\t\tsince_id not provided.")
+        if since_id != 0:
+            print("\t\tRetrieving Tweets newer than {}!".format(since_id))
+            params['since_id'] = since_id
+        else:
+            print("\t\tsince_id not provided.")
 
     return (url, params)
 
@@ -80,20 +83,28 @@ def connect_to_endpoint(url, headers, params):
     return response.json()
 
 
-def clean(text):
+def clean(text, lang):
     '''Cleans up Tweets before putting them into a CSV to ensure no errors
     in reading back. Note that we do not tokenize, stem or lemmatize.'''
 
-    # TODO: Remove links...
+    # We use a different process for Korean and English text. 
+    if lang == 'en':
+        # For English, we can use the already built Tweet preprocessing library...
+        return p.clean(text)
+    elif lang == 'ko':
+        # Korean text must be preprocessed manually, as the library we use above would 
+        # actually get rid of all the Korean text.
 
-    # Get rid of special symbols: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
-    text = "".join([char for char in text if char not in string.punctuation])
-    text = re.sub('[0-9]+', '', text)
+        # TODO: Remove links...
 
-    # Replace new lines with spaces
-    text = text.replace('\n', ' ')
+        # Get rid of special symbols: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+        text = "".join([char for char in text if char not in string.punctuation])
+        text = re.sub('[0-9]+', '', text)
 
-    # Remove emojis
-    text = emoji.replace_emoji(text, replace='')
+        # Replace new lines with spaces
+        text = text.replace('\n', ' ')
 
-    return text
+        # Remove emojis
+        text = emoji.replace_emoji(text, replace='')
+
+        return text
