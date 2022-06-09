@@ -84,6 +84,8 @@ def clean(text):
     '''Cleans up Tweets before putting them into a CSV to ensure no errors
     in reading back. Note that we do not tokenize, stem or lemmatize.'''
 
+    # TODO: Remove links...
+
     # Get rid of special symbols: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
     text = "".join([char for char in text if char not in string.punctuation])
     text = re.sub('[0-9]+', '', text)
