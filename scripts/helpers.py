@@ -71,7 +71,7 @@ def create_url(query, max_results, since_id, next_token):
 def connect_to_endpoint(url, headers, params):
     '''Sends a HTTP GET request to the specified endpoint.'''
 
-    # params object received from create_url function
+    # 'params' object should be received from create_url() function
     print("\n\tConnecting to endpoint...")
     response = requests.request("GET", url, headers=headers, params=params)
     print("\t\tEndpoint Response Code: " + str(response.status_code))
@@ -95,7 +95,8 @@ def clean(text, lang):
         # Korean text must be preprocessed manually, as the library we use above would 
         # actually get rid of all the Korean text.
 
-        # TODO: Remove links...
+        # Remove links from the text.
+        text = re.sub(r'http\S+', '', text)
 
         # Get rid of special symbols: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
         text = "".join([char for char in text if char not in string.punctuation])
