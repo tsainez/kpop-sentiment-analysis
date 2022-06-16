@@ -157,5 +157,10 @@ twitter_keys.yaml
 
 # MacOS
 .DS_Store
+
+# Files too large to be stored on GitHub
 kobert_model.pb
 kobert_best_model_state.bin
+
+# API keys
+korean-sentiment-analysis.json
