@@ -14,7 +14,7 @@ Hybe is an internationally successful and recongizable entertainment company, kn
 
 - `data.csv`
   - Contains the complete dataset, including both Korean and English results.
-  - Search queries included: `[Hybe, Le Sserafim, 르세라핌, Garam, 김가람]`
+  - Search queries included: `[Hybe, Le Sserafim, 르세라핌, Garam, 김가람, #garamout]`
 - `ko.csv` and `en.csv` contain only the Korean and English results respectively.
 
 ### Data summary
